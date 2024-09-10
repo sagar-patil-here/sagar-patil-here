@@ -3,13 +3,11 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=sagar-patil-here&label=Profile%20views&color=0e75b6&style=flat" alt="sagar-patil-here" /> </p>
 
-- 🌱 I’m currently learning **Full stack**
-
 - 👨‍💻 All of my projects are available at [https://www.linkedin.com/in/sagar-patil-b3a5a1236/](https://www.linkedin.com/in/sagar-patil-b3a5a1236/)
 
 - 📝 I regularly write articles on [medium.com](medium.com)
 
-- 💬 Ask me about **CSS**
+- 💬 Looking for more opportunities
 
 - 📫 How to reach me **email.on.sagarpatil@gmail.com**
 
