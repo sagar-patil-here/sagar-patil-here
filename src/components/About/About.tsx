@@ -91,7 +91,7 @@ export default function About() {
         <div className={styles.stats}>
           <div className={styles.stat}>
             <div className={styles.statNumber}>
-              3<span className={styles.statNumberAccent}>+</span>
+              12<span className={styles.statNumberAccent}>+</span>
             </div>
             <div className={styles.statLabel}>Projects Completed</div>
           </div>
