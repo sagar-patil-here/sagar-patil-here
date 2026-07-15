@@ -1,0 +1,186 @@
+.skills {
+  position: relative;
+  padding: var(--section-padding) 0;
+  overflow: hidden;
+}
+
+.inner {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.label {
+  composes: section-label from global;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.labelLine {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.title {
+  composes: section-title from global;
+}
+
+/* ── Marquee ── */
+.marqueeContainer {
+  margin-bottom: 80px;
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 20px 0;
+}
+
+.marqueeTrack {
+  display: flex;
+  width: fit-content;
+  gap: 0;
+}
+
+.marqueeItem {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0 24px;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-muted);
+  transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
+  line-height: 1.2;
+}
+
+.marqueeItem:hover {
+  color: var(--accent);
+  -webkit-text-stroke-color: var(--accent);
+}
+
+.marqueeSeparator {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 72px);
+  color: var(--accent);
+  padding: 0 16px;
+  opacity: 0.4;
+  line-height: 1.2;
+}
+
+.marqueeRow {
+  margin-bottom: 8px;
+}
+
+.marqueeRow:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Skill List (Card-less) ── */
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: border-color 0.4s ease;
+}
+
+.listItem:first-child {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.listItem:hover {
+  border-bottom-color: var(--accent);
+}
+
+.listLeft {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 0 0 350px;
+}
+
+.listIcon {
+  font-size: 24px;
+  color: var(--accent);
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.listItem:hover .listIcon {
+  transform: scale(1.2) rotate(15deg);
+}
+
+.listTitle {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.4s ease;
+}
+
+.listRight {
+  flex: 1;
+}
+
+.listSkills {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: color 0.4s ease;
+}
+
+.listItem:hover .listTitle,
+.listItem:hover .listSkills {
+  color: var(--text-primary);
+}
+
+@media (max-width: 968px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .listItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 32px 0;
+  }
+
+  .listLeft {
+    flex: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .listTitle {
+    font-size: 24px;
+  }
+  
+  .listSkills {
+    font-size: 14px;
+  }
+}

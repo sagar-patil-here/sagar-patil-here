@@ -1,0 +1,350 @@
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+/* ── Image — Full viewport, centered focal point ── */
+.imageContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(1.04);
+}
+
+.heroImage {
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.imageGlow {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 40%;
+  background: radial-gradient(
+    ellipse at center,
+    var(--accent-glow) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: 0;
+}
+
+/* ═══════════════════════════════════════════
+   TEXT BLOCKS — Positioned exactly where
+   the user drew the white boxes
+   ═══════════════════════════════════════════ */
+
+/* ── Left Text Block ── 
+   Large horizontal block, left of body, 
+   at chest/torso height */
+.textLeft {
+  position: absolute;
+  left: 20%;
+  top: 28%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.textLeftInner {
+  overflow: hidden;
+}
+
+.titleLeft {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 72px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+  display: block;
+  white-space: nowrap;
+}
+
+/* ── Right Text Block ── 
+   Tall vertical block, right of head/shoulder */
+.textRight {
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.textRightInner {
+  overflow: hidden;
+}
+
+.titleRight {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 56px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-transform: uppercase;
+  display: block;
+  white-space: nowrap;
+  text-align: right;
+}
+
+
+/* ── Tagline — top left ── */
+.tagline {
+  position: absolute;
+  top: 100px;
+  left: var(--container-padding);
+  z-index: 4;
+  overflow: hidden;
+}
+
+.taglineInner {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+}
+
+.taglineLine {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ── Bottom Bar — subtitle + CTA + scroll ── */
+.bottomBar {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  padding: 0 var(--container-padding);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.bottomLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(13px, 1vw, 16px);
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 320px;
+  line-height: 1.7;
+}
+
+.ctaRow {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  pointer-events: all;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  background: var(--accent);
+  color: var(--bg-primary);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border-radius: 50px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  pointer-events: all;
+}
+
+.cta:hover {
+  background: var(--accent-light);
+  transform: scale(1.03);
+}
+
+.ctaSecondary {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  position: relative;
+  pointer-events: all;
+  transition: color 0.3s ease;
+}
+
+.ctaSecondary::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--text-secondary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+
+.ctaSecondary:hover {
+  color: var(--text-primary);
+}
+
+.ctaSecondary:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ── Scroll Indicator ── */
+.scrollIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+}
+
+.scrollText {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  writing-mode: vertical-rl;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.3; transform: scaleY(0.5); }
+}
+
+/* ── Name Accent — right side vertical ── */
+.nameAccent {
+  position: absolute;
+  bottom: 100px;
+  right: var(--container-padding);
+  z-index: 4;
+  font-family: var(--font-display);
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  writing-mode: vertical-rl;
+  opacity: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 968px) {
+  .textLeft {
+    left: 3%;
+    top: 18%;
+  }
+
+  .textRight {
+    right: 3%;
+    top: 12%;
+  }
+
+  .titleLeft {
+    font-size: clamp(36px, 10vw, 72px);
+  }
+
+  .titleRight {
+    font-size: clamp(30px, 8vw, 60px);
+  }
+
+  .bottomBar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    bottom: 24px;
+  }
+
+  .bottomLeft {
+    align-items: center;
+  }
+
+  .subtitle {
+    text-align: center;
+  }
+
+  .nameAccent {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .titleLeft {
+    font-size: clamp(20px, 7vw, 32px);
+  }
+
+  .titleRight {
+    font-size: clamp(18px, 6vw, 28px);
+  }
+
+  .textLeft {
+    left: 15%;
+    top: 30%;
+  }
+
+  .textRight {
+    right: 2%;
+    top: 45%;
+  }
+
+  .ctaRow {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
