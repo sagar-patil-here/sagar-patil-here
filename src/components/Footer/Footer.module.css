@@ -2,6 +2,9 @@
   position: relative;
   padding: 40px 0;
   border-top: 1px solid var(--border-subtle);
+  /* F1 Checkered Flag Subtle Pattern */
+  background-image: conic-gradient(rgba(255, 255, 255, 0.015) 90deg, transparent 90deg 180deg, rgba(255, 255, 255, 0.015) 180deg 270deg, transparent 270deg);
+  background-size: 16px 16px;
 }
 
 .inner {

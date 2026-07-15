@@ -46,8 +46,13 @@
 
 .marqueeTrack {
   display: flex;
-  width: fit-content;
-  gap: 0;
+  white-space: nowrap;
+  animation: scroll 40s linear infinite; /* Faster for F1 feel */
+}
+
+/* F1 Motion Blur Effect on hover */
+.marqueeContainer:hover .marqueeTrack {
+  animation-play-state: paused;
 }
 
 .marqueeItem {
@@ -55,17 +60,20 @@
   font-size: clamp(36px, 5vw, 72px);
   font-weight: 700;
   text-transform: uppercase;
-  white-space: nowrap;
   padding: 0 24px;
   color: transparent;
-  -webkit-text-stroke: 1px var(--text-muted);
-  transition: color 0.3s ease, -webkit-text-stroke-color 0.3s ease;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
   line-height: 1.2;
+  position: relative;
+  /* F1 speed illusion */
+  filter: drop-shadow(-5px 0px 0px rgba(201, 168, 76, 0.05)) drop-shadow(-10px 0px 0px rgba(201, 168, 76, 0.02));
 }
 
 .marqueeItem:hover {
-  color: var(--accent);
   -webkit-text-stroke-color: var(--accent);
+  color: var(--accent-glow);
+  filter: none; /* Remove blur on focus */
 }
 
 .marqueeSeparator {
@@ -141,20 +149,22 @@
   flex: 1;
 }
 
-.listSkills {
+.skillTag {
   font-family: var(--font-body);
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text-secondary);
-  line-height: 1.8;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  transition: color 0.4s ease;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-.listItem:hover .listTitle,
-.listItem:hover .listSkills {
+.listItem:hover .skillTag {
+  border-color: rgba(201, 168, 76, 0.15);
   color: var(--text-primary);
+  background: rgba(201, 168, 76, 0.06);
 }
 
 @media (max-width: 968px) {

@@ -34,7 +34,7 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.left}>
           <span className={styles.copyright}>
-            © 2025{" "}
+            © 2026{" "}
             <span className={styles.copyrightAccent}>Sagar Patil</span>. All
             rights reserved.
           </span>
