@@ -101,13 +101,13 @@
 
 .listItem {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
   padding: 40px 0;
   border-bottom: 1px solid var(--border-subtle);
   opacity: 0;
   transform: translateY(20px);
   transition: border-color 0.4s ease;
+  cursor: pointer;
 }
 
 .listItem:first-child {
@@ -118,11 +118,10 @@
   border-bottom-color: var(--accent);
 }
 
-.listLeft {
+.listHeader {
   display: flex;
   align-items: center;
   gap: 24px;
-  flex: 0 0 350px;
 }
 
 .listIcon {
@@ -145,26 +144,53 @@
   transition: color 0.4s ease;
 }
 
-.listRight {
-  flex: 1;
+.listContent {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s var(--ease-out-expo);
+}
+
+.listItem:hover .listContent {
+  grid-template-rows: 1fr;
+}
+
+.listContentInner {
+  overflow: hidden;
+}
+
+.skillTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 24px;
+  padding-left: 48px; /* Align with title */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.5s var(--ease-out-expo);
+}
+
+.listItem:hover .skillTags {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s;
 }
 
 .skillTag {
   font-family: var(--font-body);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 
-.listItem:hover .skillTag {
-  border-color: rgba(201, 168, 76, 0.15);
+.skillTag:hover {
+  border-color: rgba(201, 168, 76, 0.3);
   color: var(--text-primary);
-  background: rgba(201, 168, 76, 0.06);
+  background: rgba(201, 168, 76, 0.08);
 }
 
 @media (max-width: 968px) {
@@ -174,14 +200,7 @@
   }
 
   .listItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
     padding: 32px 0;
-  }
-
-  .listLeft {
-    flex: none;
   }
 }
 
@@ -190,7 +209,13 @@
     font-size: 24px;
   }
   
-  .listSkills {
-    font-size: 14px;
+  .skillTags {
+    padding-left: 0;
+    gap: 8px;
+  }
+  
+  .skillTag {
+    font-size: 13px;
+    padding: 8px 16px;
   }
 }

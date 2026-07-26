@@ -203,6 +203,22 @@ button {
   padding: 0 var(--container-padding);
 }
 
+/* ── Spider-Man Web Pattern Overlay ── */
+.web-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0; /* Below content, above body bg */
+  opacity: 0.3; /* Subtle aesthetic */
+  background-image: url("data:image/svg+xml,%3Csvg width='400' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23c9a84c' stroke-width='1' fill='none' opacity='0.15'%3E%3Cpolygon points='200,50 350,120 350,280 200,350 50,280 50,120' /%3E%3Cpolygon points='200,100 300,150 300,250 200,300 100,250 100,150' /%3E%3Cpolygon points='200,150 250,180 250,220 200,250 150,220 150,180' /%3E%3Cline x1='200' y1='200' x2='200' y2='0' /%3E%3Cline x1='200' y1='200' x2='400' y2='100' /%3E%3Cline x1='200' y1='200' x2='400' y2='300' /%3E%3Cline x1='200' y1='200' x2='200' y2='400' /%3E%3Cline x1='200' y1='200' x2='0' y2='300' /%3E%3Cline x1='200' y1='200' x2='0' y2='100' /%3E%3C/g%3E%3C/svg%3E");
+  background-size: 600px 600px;
+  background-position: center;
+  mix-blend-mode: overlay;
+}
+
 /* ── Noise Grain Overlay ── */
 .grain-overlay {
   position: fixed;

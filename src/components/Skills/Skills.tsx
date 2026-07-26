@@ -168,14 +168,20 @@ export default function Skills() {
         <div className={styles.list}>
           {SKILL_CATEGORIES.map((category) => (
             <div key={category.title} className={styles.listItem}>
-              <div className={styles.listLeft}>
+              <div className={styles.listHeader}>
                 <span className={styles.listIcon}>{category.icon}</span>
                 <h3 className={styles.listTitle}>{category.title}</h3>
               </div>
-              <div className={styles.listRight}>
-                <p className={styles.listSkills}>
-                  {category.skills.join("  —  ")}
-                </p>
+              <div className={styles.listContent}>
+                <div className={styles.listContentInner}>
+                  <div className={styles.skillTags}>
+                    {category.skills.map((skill, index) => (
+                      <span key={index} className={styles.skillTag}>
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           ))}

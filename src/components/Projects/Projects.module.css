@@ -1,6 +1,6 @@
 .projects {
   position: relative;
-  padding: var(--section-padding) 0;
+  padding: 120px 0;
   overflow: hidden;
 }
 
@@ -14,7 +14,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   flex-wrap: wrap;
   gap: 24px;
 }
@@ -61,6 +61,8 @@
 /* ── Project List ── */
 .projectList {
   border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
 }
 
 .projectItem {
@@ -68,138 +70,196 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 36px 0;
+  padding: 50px 0;
   border-bottom: 1px solid var(--border-subtle);
   opacity: 0;
   transform: translateY(30px);
-  transition: border-color 0.3s ease;
-  overflow: hidden;
+  transition: padding 0.4s ease;
+  z-index: 2;
 }
 
 .projectItem:hover {
-  border-bottom-color: var(--accent);
+  padding: 60px 0;
+}
+
+.projectLinkBox {
+  flex: 1;
+  text-decoration: none;
 }
 
 .projectLeft {
   display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.projectIndex {
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--text-muted);
-  min-width: 32px;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .projectName {
   font-family: var(--font-display);
-  font-size: clamp(24px, 3vw, 44px);
-  font-weight: 700;
+  font-size: clamp(28px, 4vw, 64px); /* Reduced max-size so it fits on one line */
+  font-weight: 800;
+  line-height: 1.1;
+  text-transform: uppercase;
   color: var(--text-primary);
-  transition: color 0.3s ease;
-  position: relative;
+  transition: color 0.3s ease, -webkit-text-stroke 0.3s ease;
+  white-space: nowrap; /* Ensures it stays on one line */
 }
 
+/* Awwwards Outline Hover Effect */
 .projectItem:hover .projectName {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text-primary);
+}
+
+.projectDescription {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 400;
+  color: var(--text-secondary);
+  max-width: 400px;
+  transition: color 0.3s ease;
+}
+
+.projectItem:hover .projectDescription {
   color: var(--accent);
 }
 
 .projectRight {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 32px;
 }
 
 .projectTags {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .projectTag {
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 400;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-secondary);
-  padding: 4px 12px;
+  color: var(--text-muted);
+  padding: 6px 14px;
   border: 1px solid var(--border-subtle);
   border-radius: 20px;
   white-space: nowrap;
 }
 
-.projectArrow {
+.actionButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.iconButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
+  color: var(--text-primary);
+  background: transparent;
   transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.projectItem:hover .projectArrow {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--bg-primary);
-  transform: rotate(-45deg);
-}
-
-/* ── Hover Image Preview ── */
-.projectImagePreview {
-  position: absolute;
-  right: 15%;
-  top: 50%;
-  transform: translateY(-50%) scale(0.8);
-  width: 300px;
-  height: 200px;
-  border-radius: 12px;
-  overflow: hidden;
-  opacity: 0;
-  pointer-events: none;
+  position: relative;
   z-index: 10;
-  transition: opacity 0.4s ease, transform 0.4s var(--ease-out-expo);
-  background: var(--bg-subtle);
+}
+
+.iconButton:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+/* ── Floating Cursor Image ── */
+.cursorImageContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 220px;
+  pointer-events: none;
+  z-index: 100;
+  transform: translate(-50%, -50%); /* Centered on cursor */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.cursorImageContainer.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cursorImageSlider {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.cursorImage {
+  position: relative;
+  width: 320px;
+  height: 220px;
+  flex-shrink: 0;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.projectItem:hover .projectImagePreview {
-  opacity: 1;
-  transform: translateY(-50%) scale(1);
+.previewIframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1280px; /* 4x scale for a realistic desktop viewport */
+  height: 880px;
+  transform: scale(0.25); /* 320/1280 = 0.25 to fit inside 320x220 container */
+  transform-origin: top left;
+  border: none;
+  pointer-events: none; /* Prevents iframe from stealing scroll/clicks */
+  z-index: 1;
+  background: #fff;
 }
 
-.previewPlaceholder {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
+@media (max-width: 968px) {
+  .projectName {
+    font-size: clamp(24px, 4vw, 40px);
+    white-space: normal; /* Allow wrapping on very small screens to prevent overflow */
+  }
+  .cursorImageContainer {
+    display: none; /* Disable cursor follow on touch devices */
+  }
+  .projectItem:hover .projectName {
+    color: var(--accent);
+    -webkit-text-stroke: 0;
+  }
 }
 
 @media (max-width: 768px) {
-  .projectRight {
+  .projectItem {
     flex-direction: column;
-    align-items: flex-end;
-    gap: 12px;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 30px 0;
   }
-
+  .projectItem:hover {
+    padding: 30px 0;
+  }
+  .projectRight {
+    width: 100%;
+    justify-content: space-between;
+  }
   .projectTags {
-    display: none;
+    justify-content: flex-start;
   }
-
-  .projectImagePreview {
-    display: none;
-  }
-
   .header {
     flex-direction: column;
     align-items: flex-start;

@@ -21,22 +21,24 @@ export default function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        delay: 3.2,
+        delay: 3.8, // Wait for preloader curtain to slide up (starts at 3.3s, ends at 4.3s)
       });
 
       // 1. Image reveals — the star of the show
+      gsap.set(imageWrapperRef.current, { scale: 1.08, y: 40, opacity: 0 });
       tl.to(imageWrapperRef.current, {
         opacity: 1,
         scale: 1,
-        duration: 1.4,
-        ease: "power3.out",
+        y: 0,
+        duration: 2.2,
+        ease: "power4.out",
       });
 
       // 2. Image glow
       tl.to(
         imageGlowRef.current,
-        { opacity: 1, duration: 1.2, ease: "power2.out" },
-        "-=0.8"
+        { opacity: 1, duration: 1.5, ease: "power2.out" },
+        "-=1.2"
       );
 
       // 3. Tagline

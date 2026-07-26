@@ -55,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable} ${damion.variable}`}>
       <body>
+        <div className="web-overlay" aria-hidden="true" />
         <div className="grain-overlay" aria-hidden="true" />
         {children}
       </body>
